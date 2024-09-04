@@ -48,6 +48,11 @@ namespace VeriFactu.Xml.Factu
 
         #region Variables Privadas de Instancia
 
+		/// <summary>
+        /// Espacio de nombres de Envelope
+        /// </summary>
+		public const string NamespaceENV = "http://schemas.xmlsoap.org/soap/envelope/";
+
         /// <summary>
         /// Prefijo de espacios de nombres AEAT TIKE CONT.
         /// </summary>
@@ -64,8 +69,8 @@ namespace VeriFactu.Xml.Factu
         public const string NamespaceSFLR = NamespacePrefix + "SuministroLR.xsd";
 
 
-        #endregion
+		#endregion
 
-    }
+	}
 
 }

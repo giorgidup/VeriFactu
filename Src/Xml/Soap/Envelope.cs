@@ -40,6 +40,7 @@
 using System;
 using System.IO;
 using System.Xml.Serialization;
+using VeriFactu.Xml.Factu;
 
 namespace VeriFactu.Xml.Soap
 {
@@ -49,7 +50,7 @@ namespace VeriFactu.Xml.Soap
     /// Sobre: el cual define qué hay en el mensaje y cómo procesarlo.
     /// </summary>
     [Serializable]
-    [XmlRoot("Envelope", Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
+    [XmlRoot("Envelope", Namespace = Namespaces.NamespaceENV)]
     public class Envelope
     {
 

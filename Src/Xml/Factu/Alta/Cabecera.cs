@@ -49,7 +49,6 @@ namespace VeriFactu.Xml.Factu.Alta
     /// Datos de contexto de un suministro.
     /// </summary>
     [Serializable]
-    [XmlRoot("Cabecera", Namespace = Namespaces.NamespaceSFLR)]
     public class Cabecera
     {
 
@@ -77,7 +76,6 @@ namespace VeriFactu.Xml.Factu.Alta
         /// <para>Identificación de la versión.</para>
         /// <para>Alfanumérico(3)L15</para>
         /// </summary>
-        [XmlElement("IDVersion")]
         public string IDVersion
         {
             get
@@ -107,7 +105,6 @@ namespace VeriFactu.Xml.Factu.Alta
         /// generación del registro.</para>
         /// <para>Alfanumérico (2) L16</para>
         /// </summary>
-        [XmlElement("TipoRegistroAEAT")]
         public TipoRegistroAEAT TipoRegistroAEAT { get; set; }
 
         /// <summary>
@@ -118,7 +115,6 @@ namespace VeriFactu.Xml.Factu.Alta
         /// facturación actuales y futuros.</para>
         /// <para>Fecha (dd-mm-yyyy)</para>
         /// </summary>
-        [XmlElement("FechaFinVeriFactu")]
         public string FechaFinVeriFactu { get; set; }
 
 

@@ -42,6 +42,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.Serialization;
 using VeriFactu.Qrcode;
 using VeriFactu.Qrcode.Exceptions;
 using VeriFactu.Xml.Factu;
@@ -52,6 +53,7 @@ namespace VeriFactu.Xml
     /// <summary>
     /// Representa un registro de Verifactu: Alta, baja, evento...
     /// </summary>
+	[XmlRoot(Namespace = Namespaces.NamespaceSF)]
     public class Registro
     {
 
