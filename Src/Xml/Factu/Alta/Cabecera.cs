@@ -39,102 +39,94 @@
 
 using System;
 using System.Xml.Serialization;
+using VeriFactu.Src.Xml.Factu;
 
 namespace VeriFactu.Xml.Factu.Alta
 {
 
-    /// <summary>
-    /// Información del envío con la versión y 
-    /// los datos del obligado.
-    /// Datos de contexto de un suministro.
-    /// </summary>
-    [Serializable]
-    public class Cabecera
-    {
+	/// <summary>
+	/// Información del envío con la versión y 
+	/// los datos del obligado.
+	/// Datos de contexto de un suministro.
+	/// </summary>
+	[Serializable]
+	public class Cabecera
+	{
 
-        #region Variables Privadas de Instancia
+		#region Variables Privadas de Instancia
 
-        /// <summary>
-        /// Versiones VeriFactu.
-        /// </summary>
-        string[] _IDVersions = new string[1]
-        {
+		/// <summary>
+		/// Versiones VeriFactu.
+		/// </summary>
+		string[] _IDVersions = new string[1]
+		{
             // Versión 2024.01
             "1.0"
-        };
+		};
 
-        /// <summary>
-        /// Versión VER*FACTU.
-        /// </summary>
-        string _Version;
+		/// <summary>
+		/// Versión VER*FACTU.
+		/// </summary>
+		string _Version;
 
-        #endregion
+		#endregion
 
-        #region Propiedades Públicas de Instancia
+		#region Propiedades Públicas de Instancia
 
-        /// <summary>
-        /// <para>Identificación de la versión.</para>
-        /// <para>Alfanumérico(3)L15</para>
-        /// </summary>
-        public string IDVersion
-        {
-            get
-            {
-                return _Version;
-            }
-            set
-            {
+		/// <summary>
+		/// <para>Identificación de la versión.</para>
+		/// <para>Alfanumérico(3)L15</para>
+		/// </summary>
+		public string IDVersion
+		{
+			get
+			{
+				return _Version;
+			}
+			set
+			{
 
-                if (Array.IndexOf(_IDVersions, value) == -1)
-                    throw new ArgumentException($"Versión {value} no reconocida." +
-                        $"La versiones aceptada son {string.Join(", ", _IDVersions)}");
+				if (Array.IndexOf(_IDVersions, value) == -1)
+					throw new ArgumentException($"Versión {value} no reconocida." +
+						$"La versiones aceptada son {string.Join(", ", _IDVersions)}");
 
-                _Version = value;
-            }
-        }
+				_Version = value;
+			}
+		}
 
-        /// <summary>
-        /// Obligado que suministra la información.
-        /// </summary>
-        public Interlocutor ObligadoEmision { get; set; }
+		/// <summary>
+		/// Obligado que suministra la información.
+		/// </summary>
+		public Interlocutor ObligadoEmision { get; set; } = new Interlocutor();
+		public RemisionVoluntaria RemisionVoluntaria { get; set; }
+		public RemisionRequerimiento RemisionRequerimiento { get; set; }
 
-        /// <summary>
-        /// <para>Tipo de registro (alta inicial, alta sustitutiva). 
-        /// Contiene la operación a realizar en el sistema de la AEAT, 
-        /// lo que forma parte del detalle de las circunstancias de 
-        /// generación del registro.</para>
-        /// <para>Alfanumérico (2) L16</para>
-        /// </summary>
-        public TipoRegistroAEAT TipoRegistroAEAT { get; set; }
+		/// <summary>
+		/// <para>Tipo de registro (alta inicial, alta sustitutiva). 
+		/// Contiene la operación a realizar en el sistema de la AEAT, 
+		/// lo que forma parte del detalle de las circunstancias de 
+		/// generación del registro.</para>
+		/// <para>Alfanumérico (2) L16</para>
+		/// </summary>
+		public TipoRegistroAEAT TipoRegistroAEAT { get; set; }
 
-        /// <summary>
-        /// <para>Última fecha en la que el sistema informático actuará 
-        /// como VERIFACTU. Después de la misma, el sistema dejará de 
-        /// funcionar como VERI*FACTU. Este campo forma parte del detalle 
-        /// de las circunstancias de generación de los registros de 
-        /// facturación actuales y futuros.</para>
-        /// <para>Fecha (dd-mm-yyyy)</para>
-        /// </summary>
-        public string FechaFinVeriFactu { get; set; }
+		#endregion
 
+		#region Métodos Públicos de Instancia
 
-        #endregion
+		/// <summary>
+		/// Representacioón textual de la instancia.
+		/// </summary>
+		/// <returns>Representacioón textual de la instancia.</returns>
+		public override string ToString()
+		{
 
-        #region Métodos Públicos de Instancia
+			return $"[{IDVersion}] {ObligadoEmision}";
 
-        /// <summary>
-        /// Representacioón textual de la instancia.
-        /// </summary>
-        /// <returns>Representacioón textual de la instancia.</returns>
-        public override string ToString()
-        {
+		}
 
-            return $"[{IDVersion}] {ObligadoEmision}";
+		#endregion
 
-        }
-
-        #endregion
-
-    }
+	}
 
 }
